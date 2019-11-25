@@ -3,8 +3,6 @@
 
 #
 
-> View [demo project](https://dcyar-bookstore.herokuapp.com/)
-
 ## Made with
 - [php 7.2](https://www.php.net/)
 - [laravel 6.5.2](https://laravel.com)
