@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -33,7 +33,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                            <li class="nav-item">
+                                <a href="{{ route('library.index') }}" class="nav-link">My Library</a>
+                            </li>
+                            @if (auth()->user()->isAdmin())
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.users.index') }}" class="nav-link">Users</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.roles.index') }}" class="nav-link">Roles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.plans.index') }}" class="nav-link">Plans</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.authors.index') }}" class="nav-link">Authors</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.books.index') }}" class="nav-link">Books</a>
+                                </li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -49,12 +70,21 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <strong>Credits</strong>
+                                    <span class="badge badge-dark">{{ Auth::user()->wallet->credits }}</span>
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('wallet.index') }}">
+                                         My Wallet
+                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
