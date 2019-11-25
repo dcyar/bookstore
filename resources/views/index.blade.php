@@ -65,7 +65,7 @@
         </style>
         
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ config('app.url') . '/css/app.css' }}" rel="stylesheet">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
