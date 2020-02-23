@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,11 +13,22 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     $books = \App\Entities\Book::where('publish', 1)->latest()->get();
 
     return view('index', compact('books'));
-});
+})->name('home');
+
+Route::get('/book/{slug}', function($slug) {
+    $transaction = DB::table('book_user')->get()->last();
+
+    $book = \App\Entities\Book::where('slug', $slug)->first();
+
+    return view('book', compact('book', 'transaction'));
+})->name('book');
+
+Route::view('about', 'about')->name('about');
+Route::view('contact', 'contact')->name('contact');
 
 Auth::routes();
 
@@ -31,7 +44,7 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('/{id}/buy', 'HomeController@book_buy')->name('book.buy');
     });
-    
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'admin'], function() {
         Route::resource('users', 'UserController')->except(['show']);
         Route::resource('roles', 'RoleController')->except(['show']);
