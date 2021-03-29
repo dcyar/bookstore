@@ -6,9 +6,9 @@
 > View [video demo project](https://youtu.be/rstvLyTOW-0)
 
 ## Made with
-- [php 7.2](https://www.php.net/)
-- [laravel 6.5.2](https://laravel.com)
-- [spatie/laravel-medialibrary 7.0.0](https://docs.spatie.be/laravel-medialibrary/v7/introduction/)
+- [php >= 7.3](https://www.php.net/)
+- [laravel 8.12](https://laravel.com)
+- [spatie/laravel-medialibrary 8.0.0](https://docs.spatie.be/laravel-medialibrary/v7/introduction/)
 
 ## Features
 - Admin Panel (Users, Roles, Plans, Authors, Books)
@@ -16,7 +16,7 @@
 - User Library
 
 ## Installation
-- Check for requirements [laravel](https://laravel.com/docs/6.x/installation#server-requirements)
+- Check for requirements [laravel](https://laravel.com/docs/8.x/installation#server-requirements)
 
 ```git
 # Clone this repository in your root folder
@@ -43,8 +43,8 @@ php artisan migrate --seed
 # Create Server
 php artisan serve
 
-# Access project
-http://localhost:8080
+# Access to project in your browser
+http://localhost:8000
 
 # Admin account
 homero@mail.com
