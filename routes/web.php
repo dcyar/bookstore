@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -16,15 +17,15 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function() {
     $books = \App\Entities\Book::where('publish', 1)->latest()->get();
 
-    return view('index', compact('books'));
+    $userBooks = Auth::check() ? auth()->user()->books()->pluck('book_id')->toArray() : [];
+
+    return view('index', compact('books', 'userBooks'));
 })->name('home');
 
 Route::get('/book/{slug}', function($slug) {
-    $transaction = DB::table('book_user')->get()->last();
-
     $book = \App\Entities\Book::where('slug', $slug)->first();
 
-    return view('book', compact('book', 'transaction'));
+    return view('book', compact('book'));
 })->name('book');
 
 Route::view('about', 'about')->name('about');

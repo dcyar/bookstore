@@ -15,7 +15,11 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('book', $book->slug) }}" class="btn btn-warning btn-block">View</a>
+                    @if(!in_array($book->id, $userBooks))
+                        <a href="{{ route('book', $book->slug) }}" class="btn btn-warning btn-block">View</a>
+                    @else
+                        <a href="{{ route('library.index') }}" class="btn btn-success btn-block">View in library</a>
+                    @endif
                 </div>
             </div>
         </div>

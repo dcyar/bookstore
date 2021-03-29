@@ -22,27 +22,3 @@
         </div>
     </div>
 @endsection
-
-@section('scripts')
-    <script>
-        function sendSaleToGa() {
-            ga('require', 'ecommerce');
-            ga('ecommerce:addTransaction', {
-                'id': '{{ $transaction->id ? $transaction->id + 1 : 1 }}',
-                'affiliation': 'Bookstore',
-                'revenue': '{{ $book->price }}',
-            });
-            ga('ecommerce:addItem', {
-                'id': '{{ $transaction->id ? $transaction->id + 1 : 1 }}',
-                'name': '{{ $book->title }}',
-                'sku': '{{ $book->id }}',
-                'category': 'Books',
-                'price': '{{ $book->price }}',
-                'quantity': '1'
-            });
-            ga('ecommerce:send');
-            ga('ecommerce:clear');
-            ga('send', 'event', 'Sales', '{{ auth()->user()->email }}', '{{ $book->title }}', {{ $book->price }});
-        }
-    </script>
-@endsection
