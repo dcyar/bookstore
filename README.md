@@ -6,9 +6,9 @@
 > View [video demo project](https://youtu.be/rstvLyTOW-0)
 
 ## Made with
-- [php >= 7.3](https://www.php.net/)
-- [laravel 8.12](https://laravel.com)
-- [spatie/laravel-medialibrary 8.0.0](https://docs.spatie.be/laravel-medialibrary/v7/introduction/)
+- [php >= 8.0](https://www.php.net/)
+- [laravel 9.52.4](https://laravel.com)
+- [spatie/laravel-medialibrary 9.0](https://spatie.be/docs/laravel-medialibrary/v9/introduction)
 
 ## Features
 - Admin Panel (Users, Roles, Plans, Authors, Books)
@@ -18,7 +18,7 @@
 ## Installation
 - Check for requirements [laravel](https://laravel.com/docs/8.x/installation#server-requirements)
 
-```git
+```shell
 # Clone this repository in your root folder
 git clone https://github.com/dcyar/bookstore.git 
 
@@ -55,4 +55,4 @@ password
 #
 > Thanks for your visit.
 
-- Twitter: [@dcyar_](https://twitter.com/dcyar_)
+- Twitter: [@jhonachata](https://twitter.com/jhonachata)
