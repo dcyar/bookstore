@@ -1,5 +1,5 @@
 # BOOKSTORE
-> Simple e-commerce of books
+> Simple e-commerce of books with user wallet and stripe integration
 
 #
 
@@ -9,14 +9,18 @@
 - [php >= 8.0](https://www.php.net/)
 - [laravel 9.52.4](https://laravel.com)
 - [spatie/laravel-medialibrary 9.0](https://spatie.be/docs/laravel-medialibrary/v9/introduction)
+- [Stripe](https://stripe.com)
 
 ## Features
 - Admin Panel (Users, Roles, Plans, Authors, Books)
-- User Wallet (user can buy credits)
+- User Wallet with credits
 - User Library
+- Stripe integration for buy credits (Checkout sessions)
 
 ## Installation
-- Check for requirements [laravel](https://laravel.com/docs/8.x/installation#server-requirements)
+- Check for requirements [laravel](https://laravel.com/docs/9.x/installation#server-requirements)
+
+> This project require stripe api keys, please read [stripe docs](https://stripe.com/docs/api/checkout/sessions)
 
 ```shell
 # Clone this repository in your root folder

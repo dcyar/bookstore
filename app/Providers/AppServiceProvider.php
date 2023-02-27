@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Entities\Book;
 use App\Observers\BookObserver;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
 {

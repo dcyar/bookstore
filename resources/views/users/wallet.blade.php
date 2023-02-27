@@ -18,16 +18,20 @@
                         @foreach ($plans as $plan)
                             <div class="col-md-4 col-sm-12">
                                 <div class="card">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">{{ $plan->name }}</h5>
-                                    </div>
-                                    <ul class="list-group list-group-flush text-center">
-                                        <li class="list-group-item">{{ $plan->credits }} total credits</li>
-                                        <li class="list-group-item">${{ $plan->price }}</li>
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="{{ route('wallet.buy', $plan->id) }}" class="btn btn-primary btn-block">Buy</a>
-                                    </div>
+                                    <form action="/checkout" method="post">
+                                        @csrf
+                                        <input type="hidden" name="plan_id" value="{{ $plan->id }}" />
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">{{ $plan->name }}</h5>
+                                        </div>
+                                        <ul class="list-group list-group-flush text-center">
+                                            <li class="list-group-item">{{ $plan->credits }} total credits</li>
+                                            <li class="list-group-item">${{ $plan->price }}</li>
+                                        </ul>
+                                        <div class="card-body">
+                                            <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         @endforeach

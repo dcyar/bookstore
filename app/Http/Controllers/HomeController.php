@@ -15,7 +15,7 @@ class HomeController extends Controller
         return view('users.wallet', compact('plans'));
     }
 
-    public function wallet_buy($id)
+    public function wallet_buy(int $id)
     {
         $plan = Plan::findOrFail($id);
 
@@ -31,7 +31,7 @@ class HomeController extends Controller
         return view('users.library', compact('books'));
     }
 
-    public function book_buy($id)
+    public function book_buy(int $id)
     {
         $book = Book::findOrFail($id);
 

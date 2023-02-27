@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/info', function () {
-    phpinfo();
-});
 Route::get('/', function() {
     $books = \App\Entities\Book::where('publish', 1)->latest()->get();
 
@@ -48,6 +46,9 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('/{id}/buy', 'HomeController@book_buy')->name('book.buy');
     });
+
+    Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
+    Route::get('/success', [StripeController::class, 'success'])->name('success');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'admin'], function() {
         Route::resource('users', 'UserController')->except(['show']);
