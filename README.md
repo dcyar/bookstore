@@ -23,7 +23,7 @@
 git clone https://github.com/dcyar/bookstore.git 
 
 # Install dependencies
-componser install
+composer install
 
 # Navigate to the bookstore folder
 cd bookstore

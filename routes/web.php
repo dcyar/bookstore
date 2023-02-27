@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+Route::get('/info', function () {
+    phpinfo();
+});
 Route::get('/', function() {
     $books = \App\Entities\Book::where('publish', 1)->latest()->get();
 
